@@ -6,15 +6,9 @@
 
 - [General Info](#general-information)
 - [Technologies Used](#technologies-used)
-- [Features](#features)
-- [Screenshots](#screenshots)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Project Status](#project-status)
-- [Room for Improvement](#room-for-improvement)
-- [Acknowledgements](#acknowledgements)
-- [Contact](#contact)
-<!-- * [License](#license) -->
+- [Shemas](#schemas)
 
 ## General Information
 
@@ -244,3 +238,56 @@ Update contact favorite status
   400 - Validation error
   401 - Missing or incorrect header with authorization token
   500 - Server error
+
+## Schemas
+
+### User
+
+- password:
+  required
+  string
+  at least 6 char length
+- email:
+  required
+  string
+  unique
+  email address
+- subscription:
+  string
+  enum: ["starter", "pro", "business"]
+  default: "starter"
+- token:
+  string
+  default: null
+  backend-generated authentication token
+- avatarURL:
+  required,
+  string,
+  backend-generated url to users' avatar
+- verified:
+  required,
+  boolean,
+  default: false
+- verificationToken:
+  required
+  string
+  backend-generated token for email verification
+
+### Contact
+
+- name:
+  required
+  string
+- email:
+  string
+  email adress
+- phone:
+  string
+  phone number
+- favorite:
+  required
+  boolean
+  default: false
+- owner:
+  required,
+  backend-generated user ID
