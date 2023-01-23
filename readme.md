@@ -1,6 +1,6 @@
 # Contacts REST API
 
-> RESt API written in Node.js used to store registered users contacts in MongoDB Atlas.
+> REST API written in Node.js used to store registered users contacts in MongoDB Atlas.
 
 ## Table of Contents
 
@@ -8,7 +8,7 @@
 - [Technologies Used](#technologies-used)
 - [Setup](#setup)
 - [Usage](#usage)
-- [Shemas](#schemas)
+- [Schemas](#schemas)
 
 ## General Information
 
@@ -23,10 +23,11 @@ Node.js, Express, MongoDB, MongoDB Atlas, Mongoose, JEST
 ## Setup
 
 To setup project just download repository and install dependencies. Example configuration file .env.example is in route directory. Your configuration should be stored in .env file in project route directory.
-PORT - can be ommited, by default will use 3000.
-DB_HOST - here should be a link with username and password to connect to MongoDB Atlas. Is provided by MongoDB Atlas control panel, when clicking connect button to cluster.
-SECRET_KEY - is some random characters sequence for hashing data
-SENDGRID_API_KEY - is an API key you get by registration in sendgrid API. It is used to send emails to users.
+
+- PORT - can be ommited, by default will use 3000.
+- DB_HOST - here should be a link with username and password to connect to MongoDB Atlas. Is provided by MongoDB Atlas control panel, when clicking connect button to cluster.
+- SECRET_KEY - is some random characters sequence for hashing data
+- SENDGRID_API_KEY - is an API key you get by registration in sendgrid API. It is used to send emails to users.
 
 ## Usage
 
@@ -35,6 +36,8 @@ Endpoints to use
 ### Authentication
 
 #### POST method /api/auth/signup
+
+Create a new user
 
 - Parameters:
   No parameters
@@ -51,6 +54,8 @@ Endpoints to use
 
 #### POST method /api/auth/login
 
+Log in User
+
 - Parameters:
   No parameters
 - Request body:
@@ -66,6 +71,8 @@ Endpoints to use
 
 #### POST method /api/auth/logout
 
+Log out user
+
 - Parameters:
   Authorization(required) header: string - token issued to the current user.
 
@@ -75,6 +82,8 @@ Endpoints to use
   500 - Server error
 
 #### GET method /api/auth/current
+
+Get information about the current user
 
 - Parameters:
   Authorization(required) header: string - token issued to the current user.
@@ -86,11 +95,9 @@ Endpoints to use
 
 ### User
 
-To use user should be logged in
-
 #### PATCH method /api/users/
 
-Updating user subscription
+Update user subscription
 
 - Parameters:
   No parameters
@@ -106,6 +113,8 @@ Updating user subscription
 
 #### PATCH method /api/users/avatars
 
+Update user avatar
+
 - Parameters:
   Authorization(required) header: string - token issued to the current user.
   Content-Type header: multipart/form-data
@@ -117,6 +126,8 @@ Updating user subscription
   500 - Server error
 
 #### GET method /api/users/verify/:verificationToken
+
+Verify user email
 
 - Parameters:
   verificationToken: send to users' email when signup
@@ -160,7 +171,7 @@ Get all users contacts
 
 #### GET method /api/contacts/:id
 
-Get one user contact by id
+Get one users' contact by id
 
 - Parameters:
   Authorization(required) header: string - token issued to the current user.
